@@ -1,8 +1,29 @@
- <h3>New Bookmark</h3>
+<style>
+.container {
+  max-width: 940px;
+  .center-block();
+}
+
+h3 {
+  text-align: center;
+
+}
+
+</style>
+
+  <div class = "container">
+<!--   <div class = "pull-right"> -->
+   <h3>Create a Bookmark</h3>
+
+   </div>
+  </div>
 
 <!-- referring to another view's code
 #render the form partial.
 
 #the bookmark will be the local variable 'bookmark'
 in the form partial-->
+
+
+
 <%=render 'form', bookmark: @bookmark %>

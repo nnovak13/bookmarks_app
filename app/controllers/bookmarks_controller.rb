@@ -1,9 +1,9 @@
-  class BookmarksController < ApplicationController
+class BookmarksController < ApplicationController
 
   # GET /bookmarks
   def index
     @bookmarks = Bookmark.all
-    #render text: "in the index controller bookmarks = #{@bookmarks.to_json}"
+
   end
 
   #GET /bookmarks/:id
@@ -13,7 +13,7 @@
 
   #GET /bookmarks/new
   def new
-      @bookmark = Bookmark.new
+    @bookmark = Bookmark.new
   end
 
   #POST/bookmarks
@@ -23,11 +23,13 @@
 
     @bookmark = Bookmark.new(bookmark_params)
 
-     if @bookmark.save
+    if @bookmark.save
       # It saved, so lets see this new bookmark
       # render :show, status: :created, location: @bookmark
+      # flash[:notice] = "Bookmark submitted"
       redirect_to bookmarks_path
     else
+
       render :new
     end
   end
@@ -36,23 +38,27 @@
     @bookmark = Bookmark.find(params[:id])
   end
 
-      #bookmarksController#update
-      #will update an existing model, bookmark
+
+
+
+
+  #bookmarksController#update
+  #will update an existing model, bookmark
   def update
-        #get the bookmark to update
-        @bookmark = Bookmark.find(params[:id])
+    #get the bookmark to update
+    @bookmark = Bookmark.find(params[:id])
 
-            #Using strong params
-              #update this bookmark
+    #Using strong params
+    #update this bookmark
 
-        # bookmark#update
-        #this is where we actually update the model
-        if @bookmark.update(bookmark_params)
-          redirect_to @bookmark, notice: "You have updated the #{@bookmark.title}"
-        else
-          # No worky, try again, show me the form you.
-          render :edit
-        end
+    # bookmark#update
+    #this is where we actually update the model
+    if @bookmark.update(bookmark_params)
+      redirect_to @bookmark, notice: "You have updated the #{@bookmark.title}"
+    else
+      # No worky, try again, show me the form you.
+      render :edit
+    end
   end
 
 
@@ -72,11 +78,18 @@
     redirect_to bookmarks_path, notice: "You have deleted the bookmark"
   end
 
-private
+  # def favorite
+  #   @bookmark = Bookmark.find(params[:id])
+  #   if @bookmark.favorite(bookmark_params)
+  #     :is_favorite == true
+
+  #   end
+
+
+  private
 
   #Define which parameters are allowed to be used to create a Bookmark
   def bookmark_params
     params.require(:bookmark).permit([:title, :url, :category, :comment, :is_favorite])
   end
 end
-

@@ -1,5 +1,16 @@
 <p>
-Name is <%= @bookmark.title %>, URL is <%= @bookmark.url%>
+Name is <%= @bookmark.title %><br>
+
+ URL is <%= @bookmark.url%> <br><br>
+
+
+Your comment: "<%= @bookmark.comment %>" <br>
+
+You know, bro, it'd be, like, totally <%= @bookmark.is_favorite%> to say that this is one of your favorites. <br>
+
+Category is <%= @bookmark.category %> <br> <br>
+
+
 </p>
 <%= link_to 'Update', edit_bookmark_path(@bookmark) %><br>
 <%= link_to 'Go to all Bookmarks', bookmarks_path %>

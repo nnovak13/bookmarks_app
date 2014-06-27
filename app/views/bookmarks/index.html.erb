@@ -3,13 +3,21 @@
 
 <style>
 
+
+.container {
+  max-width: 800px;
+  .center-block();
+}
+
+.all-wrapper {
+}
+
 .create-button {
   margin: 0 auto;
   float: center;
 }
 
 .button-wrapper {
- margin: 0 auto;
   float: center;
 
 }
@@ -34,8 +42,9 @@
               <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Home</a></li>
-                <li><a href="#about">All Bookmarks</a></li>
-                <li><a href="#contact">Anout</a></li>
+                <li><a href="bookmarks">All Bookmarks</a></li>
+                <li><a href="category">Category</a></li>
+                <li><a href="comments">Comments</a></li>
                 <li class="dropdown">
                 </li>
               </ul>
@@ -46,11 +55,63 @@
     </div>
   </div>
 
+  <div class = "container">
+    <div class = "container-fluid">
+      <div class = "all-wrapper">
+        <h1>All yr Bookmks, bro</h1>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Url</th>
+              <th>Category</th>
+              <th>Favorite?</th>
+              <th>Comments?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @bookmarks.each do |bookmark| %>
+              <tr>
+                <td><%= bookmark.id %></td>
+                <td><%= link_to bookmark.title, bookmark_path(bookmark)%></td>
+                <td><%= bookmark.url %></td>
+                <td><%= bookmark.is_favorite %></td>
+                <td><%= bookmark.category %></td>
+                <td><%= bookmark.has_attribute?(:comment) %></td>
+                <td>
+                  <%= link_to 'Edit', edit_bookmark_path(bookmark), :class => 'btn btn-mini' %>
+                  <%= link_to 'Delete', bookmark_path(bookmark), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 
 
-<ul> Bookmarks
-<%= render partial: "bookmark", collection: @bookmarks %>
-</ul>
+
+
+      <div class = "container">
+        <div class = "button-wrapper">
+            <div class = "create-button">
+              <button type="button" class="btn btn-default active btn-block">
+               <%= link_to 'Create a new Bookmark',
+                new_bookmark_path %>
+              </button>
+            </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
 
 
 
@@ -64,16 +125,7 @@
   <div class="col-xs-12 col-sm-6 col-md-8"></div>
   <div class="col-xs-6 col-md-4"> -->
 
-  <div class = "container-fluid">
-    <div class = "button-wrapper">
-        <div class = "create-button">
-          <button type="button" class="btn btn-default active">
-           <%= link_to 'Create a new Bookmark',
-            new_bookmark_path %>
-          </button>
-        </div>
-    </div>
-  </div>
+
 
 
 <!--   </div>
@@ -86,4 +138,6 @@
 
 
 
+</style>
+</html>
 

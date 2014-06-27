@@ -1,22 +1,18 @@
 class Bookmark < ActiveRecord::Base
 
-  #validate that we have a title
-  validates :title, presence: true
-
-  #validates that title is unique
-  validates :title, uniqueness: true
-
-  #validate that the name has at least 3 characters
-  validates :title, length: {minimum: 3}
+  #validate that we have a title, that it's unique, and that it has at least 3 characters
+  validates :title, presence: true, uniqueness: true, length: { minimum: 3 }
 
   ####validate that we have a url
-  validates :url, presence: true
+  validates :url, presence: true, uniqueness: true
 
-  #validates that url is unique
-  validates :url, uniqueness: true
 
   #validate that the url starts w/ http
-  # validates :url, format: { :with => /\Ahttp:+\z/}
+  validates :url, format: { with: /\Ahttp:/ }
+  # validates :url, with: {"/\Ahttp:+\z/"}
+  #validates_presence_of {"/\Ahttp:+\z/"}
   #validates :url, start_with?:('http')
+
+  #validates :category, uniqueness: true
 
 end
