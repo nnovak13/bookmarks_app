@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+
+.create-button {
+  margin: 0 auto;
+  float: center;
+}
+
+.button-wrapper {
+ margin: 0 auto;
+  float: center;
+
+}
+
+</style>
+
+
+    <div class="navbar-wrapper">
+      <div class="container">
+
+        <div class="navbar navbar-inverse navbar-static-top" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">Bookmkr</a>
+            </div>
+              <div class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">All Bookmarks</a></li>
+                <li><a href="#contact">Anout</a></li>
+                <li class="dropdown">
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<ul> Bookmarks
+<%= render partial: "bookmark", collection: @bookmarks %>
+</ul>
+
+
+
+<!-- <h2>
+  <%= link_to 'Create a new Bookmark',
+  new_bookmark_path %>
+</h2>
+<br> -->
+
+<!-- <div class="row">
+  <div class="col-xs-12 col-sm-6 col-md-8"></div>
+  <div class="col-xs-6 col-md-4"> -->
+
+  <div class = "container-fluid">
+    <div class = "button-wrapper">
+        <div class = "create-button">
+          <button type="button" class="btn btn-default active">
+           <%= link_to 'Create a new Bookmark',
+            new_bookmark_path %>
+          </button>
+        </div>
+    </div>
+  </div>
+
+
+<!--   </div>
+</div> -->
+
+<br>
+<!-- <%= button_to 'Create a new Bookmark', new_bookmark_path, :class => 'btn btn-large btn-primary active'  %> -->
+
+
+
+
+
+

@@ -1,0 +1,6 @@
+<p>
+Name is <%= @bookmark.title %>, URL is <%= @bookmark.url%>
+</p>
+<%= link_to 'Update', edit_bookmark_path(@bookmark) %><br>
+<%= link_to 'Go to all Bookmarks', bookmarks_path %>
+

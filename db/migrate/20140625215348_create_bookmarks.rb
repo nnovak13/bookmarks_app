@@ -1,7 +1,7 @@
 class CreateBookmarks < ActiveRecord::Migration
   def change
     create_table :bookmarks do |t|
-      t.string :title, null: false, unique: true
+      t.string :title, null: false
       t.string :url, null: false
       t.string :category
       t.text :comment
