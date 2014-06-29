@@ -2,7 +2,7 @@ class BookmarksController < ApplicationController
 
   # GET /bookmarks
   def index
-    @bookmarks = Bookmark.all
+    @bookmarks = Bookmark.order(:title)
 
   end
 
