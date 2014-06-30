@@ -2,8 +2,11 @@ class BookmarksController < ApplicationController
 
   # GET /bookmarks
   def index
-    @bookmarks = Bookmark.order(:title)
-
+    if params[:filter].nil?
+       @bookmarks = Bookmark.order(:title)
+    else
+       @bookmarks = Bookmark.order(:title).where(category: params[:filter])
+    end
   end
 
   #GET /bookmarks/:id

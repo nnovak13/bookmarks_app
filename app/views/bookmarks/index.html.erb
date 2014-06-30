@@ -22,6 +22,12 @@
 
 }
 
+.category-filter {
+  float: center;
+  display: inline;
+
+}
+
 </style>
 
 
@@ -70,6 +76,18 @@
               <th>Comments?</th>
             </tr>
           </thead>
+
+<div class = "category-filter">
+      <ul>Filter by Category
+         <% @bookmarks.map(&:category).uniq.sort.each do |category| %>
+           <li><%= link_to category, filter: category %></li>
+         <% end %>
+         <% unless params[:filter].nil? %>
+          <li><%= link_to "Clear Filter", filter: nil %></li>
+         <% end %>
+       </ul>
+      </div>
+
           <tbody>
             <% @bookmarks.each do |bookmark| %>
               <tr>
